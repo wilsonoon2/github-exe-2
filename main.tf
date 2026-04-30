@@ -14,4 +14,11 @@ provider "aws" {
 resource "aws_s3_bucket" "demo" {
   bucket = "wilson-demo-bucket-12345"
 }
+resource "aws_s3_bucket_tagging" "demo_tags" {
+  bucket = aws_s3_bucket.demo.id
 
+  tag_set = {
+    Name = "DemoBucket"
+    Environment = "Dev"
+  }
+}
